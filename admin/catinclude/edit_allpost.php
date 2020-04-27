@@ -40,6 +40,6 @@
         <textarea class="form-control" name="post_content" id="" col="30" row="10"></textarea>
     </div>
     <div class="form-group">
-        <input type="submit" class="btn btn-primary" name="create_post" value="publish">
+        <input type="submit" class="btn btn-primary" name="update" value="update">
     </div>
 </form>

@@ -127,7 +127,7 @@
                                 <a href="posts.php?source=add_post">Add post</a>
                             </li>
                             <li>
-                                <a href="/cms/admin/posts.php">Veiw All posts</a>
+                                <a href="/cms-php/admin/posts.php">Veiw All posts</a>
                             </li>
                         </ul>
                     </li>

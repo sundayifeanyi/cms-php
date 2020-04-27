@@ -49,8 +49,8 @@
                         echo "<td>{$posts_date}</td>";
                         echo "<td>{$posts_comment}</td>";
                         echo "<td>{$posts_views_count}</td>";
-                        echo "<td> <a href='posts.php?edit&p_id= {$posts_id}'> Edit</td>";
-                        echo "<td> <a href='posts.php?delete= {$posts_id}'> delete</td>";
+                        echo "<td> <a href='posts.php?source=edit_allpost&p_id= {$posts_id}'> Edit</td>";
+                        echo "<td> <a href='posts.php?source=add_post&delete= {$posts_id}'> delete</td>";
                         echo "</tr>";
              
                        }
