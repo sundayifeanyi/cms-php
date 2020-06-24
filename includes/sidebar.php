@@ -20,7 +20,8 @@
 <div class="well">
 
 <?php 
-               $query = "SELECT * FROM categories LIMIT 6";
+               //$query = "SELECT * FROM categories LIMIT 6";
+               $query = "SELECT * FROM categories";
                $select_categories_sidebar = mysqli_query($connection,$query);
                ?>
     <h4>Blog Search</h4>
@@ -34,7 +35,22 @@
         </span>
     </div>
     </form>
-    <!-- /.input-group -->
+    
+    
+    <!-- /login form -->
+    <h4>Login</h4>
+    <form action="includes/login.php" method="post">
+    <div class="form-group">
+        <input name="username" type="text" class="form-control" placeholder="username"> <br>
+        <input name="password" type="password" class="form-control" placeholder="password"> <br>
+        <span class="input-group-btn"> 
+            <button name="login" class="btn btn-default" type="submit"> login
+                <!-- <span class="glyphicon glyphicon-search"></span> -->
+        </button>
+        </span>
+    </div>
+    </form>
+
 </div>
 
 <!-- Blog Categories Well -->
@@ -46,35 +62,15 @@
 
             <?php 
                while($row = mysqli_fetch_assoc($select_categories_sidebar)){
-                   $cat_title = $row['cat_title'];
-                   echo "<li> <a href='#'>{$cat_title}</a></li>";
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+                   echo "<li> <a href='category.php?category= $cat_id'>{$cat_title}</a></li>";
                }
                
                ?>
-                <!-- <li><a href="#">Category title</a>
-                </li>
-                <li><a href="#">Category user</a>
-                </li>
-                <li><a href="#">Category author</a>
-                </li>
-                <li><a href="#">Category content</a>
-                </li> -->
             </ul>
         </div>
-        <!-- /.col-lg-6 -->
-        <!-- <div class="col-lg-6">
-            <ul class="list-unstyled">
-                <li><a href="#">Category title</a>
-                </li>
-                <li><a href="#">Category user</a>
-                </li>
-                <li><a href="#">Category author</a>
-                </li>
-                <li><a href="#">Category content</a>
-                </li>
-            </ul>
-        </div> -->
-        <!-- /.col-lg-6 -->
+       
     </div>
     <!-- /.row -->
 </div>

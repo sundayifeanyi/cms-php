@@ -8,7 +8,7 @@ if(isset($_POST['create_post'])){
     $post_image= $_FILES['post_image']['name'];
     $post_image_temp= $_FILES['post_image']['tmp_name'];
     $post_tags= $_POST['post_tag'];
-    $post_comment= $_POST['post_comment'];
+   // $post_comment= $_POST['post_comment'];
     $post_status= $_POST['post_status'];
     $post_views = $_POST['post_views_count'];
     $post_date= date('d-m-y');
@@ -17,10 +17,10 @@ if(isset($_POST['create_post'])){
 
     $query = "INSERT INTO post_blog(post_category,post_title,
     post_user,post_author,post_date,post_image,post_content,
-    post_tags,post_comments_count,post_status,post_views_count)";
+    post_tags,post_status,post_views_count)";
     $query .= "VALUES('{$post_category}','{$post_title}','{$post_user}','{$post_author}',
     now(),'{$post_image}','{$post_content}','{$post_tags}',
-    '{$post_comment}','{$post_status}',{$post_views})";
+    '{$post_status}',{$post_views})";
 
     $create_post_query = mysqli_query($connection,$query);
    
@@ -43,12 +43,34 @@ if(isset($_POST['create_post'])){
     </div>
     <div class="form-group">
         <label for="post_category">post_category</label>
-        <input type="text" class="form-control" name="post_category">
+        <!-- <input type="number" class="form-control" name="post_category"> -->
+        <select name="post_category" id="" class="form-control"> 
+       <?php 
+        
+        $query = "SELECT * FROM categories ";
+        $select_post_cat = mysqli_query($connection,$query);
+        while($row = mysqli_fetch_assoc($select_post_cat)){
+            testResult($select_post_cat);
+            $cat_id = $row['cat_id'];
+            $cat_title = $row['cat_title'];
+            echo "<option value='$cat_id'>$cat_title</option>";
+        }
+        ?>
+       </select>
     </div>
     <div class="form-group">
         <label for="post_status">post_status</label>
+         <select name="post_status" id="" class="form-control">
+         <option value='draft'>draft</option>
+         <option value='published'>published</option>
+        }
+        ?>
+       </select>
+         </div>
+    <!-- <div class="form-group">
+        <label for="post_status">post_status</label>
         <input type="text" class="form-control" name="post_status">
-    </div>
+    </div> -->
     <div class="form-group">
         <label for="post_image">post_image</label>
         <input type="file" class="form-control" name="post_image">
@@ -57,10 +79,10 @@ if(isset($_POST['create_post'])){
         <label for="post_tag">post_tag</label>
         <input type="text" class="form-control" name="post_tag">
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="post_comment">post_comment</label>
         <input type="text" class="form-control" name="post_comment">
-    </div>
+    </div> -->
     <div class="form-group">
         <label for="post_views_count">post_view_count</label>
         <input type="number" class="form-control" name="post_views_count">

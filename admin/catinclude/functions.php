@@ -56,9 +56,11 @@ function delete_posts(){
     global $connection;
 if(isset($_GET['delete'])){
     $delete = $_GET['delete'];
-    $query = "DELETE FROM post_blog WHERE post_id = {$delete} ";
-    $delete_id = mysqli_query($connection, $query);
+    echo "delete";
+    $deletequery = "DELETE FROM post_blog WHERE post_id = {$delete} ";
+    $delete_id = mysqli_query($connection, $deletequery);
     header("location: all_posts.php");
+    testResult($deletequery);
  }
 }
 

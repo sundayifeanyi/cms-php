@@ -1,6 +1,7 @@
  <!-- update form -->
  <form action="" method="post">
-                            <label for="cat-title">Update Cart</label>
+    <div class="form-group">
+        <label for="cat_title">Edit category</label>
                             <?php 
                             if(isset($_GET['edit'])){
                                 $edit_id = $_GET['edit'];
@@ -25,6 +26,7 @@
                                     }
                                
                                ?>
+                               </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" type="submit" name="update" value="Update Cart">
                                 </div>

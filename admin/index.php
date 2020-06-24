@@ -15,7 +15,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             welcome to admin page
-                            <small>small</small>
+                            <small> <?php echo $_SESSION['firstname'];?> </small>
                         </h1>
                         <!-- <ol class="breadcrumb">
                             <li>
@@ -28,7 +28,168 @@
                     </div>
                 </div>
                 <!-- /.row -->
+                <div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-file-text fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                    <?php
+                    $query = "SELECT * FROM post_blog";
+                    $select = mysqli_query($connection, $query);
+                    $post_counts =mysqli_num_rows($select);
+                    echo "<div class='huge'>$post_counts</div>";
+                    ?>
+                  
+                        <div>Posts</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/cms-php/admin/posts.php">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-comments fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                    <?php
+                    $query = "SELECT * FROM commets";
+                    $select = mysqli_query($connection, $query);
+                    $comment_counts =mysqli_num_rows($select);
+                    echo "<div class='huge'>$comment_counts</div>";
+                    ?>
+                      <div>Comments</div>
+                    </div>
+                </div>
+            </div>
+            <a href="comments.php">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                    <?php
+                    $query = "SELECT * FROM users";
+                    $select = mysqli_query($connection, $query);
+                    $user_counts =mysqli_num_rows($select);
+                    echo "<div class='huge'>$user_counts</div>";
+                    ?>
+                        <div> Users</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/cms-php/admin/users.php">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-list fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                    <?php
+                    $query = "SELECT * FROM categories";
+                    $select = mysqli_query($connection, $query);
+                    $cat_counts =mysqli_num_rows($select);
+                    echo "<div class='huge'>$cat_counts</div>";
+                    ?>
+                         <div>Categories</div>
+                    </div>
+                </div>
+            </div>
+            <a href="categorys.php">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- row_end -->
+<div class="row">
+    <?php
+    $query = "SELECT * FROM post_blog WHERE post_status = 'draft'";
+    $select_draft = mysqli_query($connection, $query);
+    $draft_counts =mysqli_num_rows($select_draft);
 
+    $query = "SELECT * FROM commets WHERE comment_status = 'unapproved'";
+    $select_unapproved_comments = mysqli_query($connection, $query);
+    $unapproved_comments =mysqli_num_rows($select_unapproved_comments);
+
+    // $query = "SELECT * FROM users WHERE";
+    // $select = mysqli_query($connection, $query);
+    // $user_counts =mysqli_num_rows($select);
+    
+    // $query = "SELECT * FROM categories WHERE ";
+    // $select_ = mysqli_query($connection, $query);
+    // $cat_counts =mysqli_num_rows($select);
+    ?>
+
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Data', 'Counts'],
+          <?php
+          $Entries = ['Posts','Drafts','Categories','Users','Comments','unapproved_comments'];
+          $counts = [$post_counts,$draft_counts,$cat_counts,$user_counts,$comment_counts,$unapproved_comments];
+          for($i= 0; $i < 6; $i++){
+              echo "['{$Entries[$i]}'" . "," . "{$counts[$i]}],";
+          }
+          ?>
+        ]);
+
+        var options = {
+          chart: {
+            title: '',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  
+    <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
+  
             </div>
             <!-- /.container-fluid -->
 
