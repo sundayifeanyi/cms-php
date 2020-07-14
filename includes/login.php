@@ -23,8 +23,8 @@
                $new_userrole = $row['user_role'];
             }
 
-            //if($usern !== $new_username && $passw !== $new_password){
-            if($usern === $new_username && $passw === $new_password){
+            $passw = crypt($passw, $new_password);
+            if($usern === $new_username && $passw === $new_password && $new_userrole == 'Admin'){
                 
                 $_SESSION['username'] = $new_username;
                 $_SESSION['firstname'] = $new_userfirstn;

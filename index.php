@@ -46,7 +46,7 @@
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>
                 <a href="post.php?p_id=<?php echo $post_id; ?>">
-                <img class="img-responsive" src="./images/<?php echo $post_image ?>" alt="images">
+                <img class="img-responsive" src="./images/<?php echo $post_image ?>">
                 </a>
                 <hr>
                 <p><?php echo $post_content ?></p>
@@ -105,7 +105,7 @@
                 </select>
                 </div> 
                         <div class="form-group">
-                            <textarea class="form-control" name="comment_content" id="" cols="5" rows="3"></textarea>
+                            <textarea class="form-control" name="comment_content" id="textarea" cols="5" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" name="submitcomment">submit</button>
                 </form>
@@ -133,7 +133,7 @@
                 <!-- Comment -->
                 <div class="media jumbotron">
                     <a class="pull-left" href="#">
-                        <img class="media-object" src="/images/ss" alt="image">
+                        <img class="media-object" src="" alt="image">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><?php echo $comment_author?>

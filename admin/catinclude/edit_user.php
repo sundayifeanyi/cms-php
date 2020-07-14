@@ -16,6 +16,7 @@
      }
    
    }
+      
 if(isset($_POST['update_user'])){
     $username= $_POST['username'];
     $userpassword= $_POST['userpassword'];
@@ -36,9 +37,19 @@ if(isset($_POST['update_user'])){
         }
     }
 
+    $query = "SELECT encrytpass FROM users";
+   $randquery = mysqli_query($connection, $query);
+   if(!$randquery){
+       die('Query fialed'. mysqli_error($connection));
+   } 
+
+      $row = mysqli_fetch_array($randquery);
+      $emcrypt = $row['encrytpass'];
+      $hashedpassword = crypt($userpassword,$emcrypt);
+
     $query ="UPDATE users SET 
     username= '{$username}',
-    user_password= '{$userpassword}',
+    user_password= '{$hashedpassword}',
     user_firstname= '{$userfirstname}',
     user_lastname= '{$userlastname}',
     user_email= '{$useremail}',
@@ -75,7 +86,7 @@ if(isset($_POST['update_user'])){
     </div>
     <div class="form-group">
         <select name="role" id="">
-            <option value=""> <?php echo $role;?> </option>
+            <option value="<?php echo $role;?>"> <?php echo $role;?> </option>
             <?php 
             if($role == 'Admin'){
                 echo "<option value='Subscriber'>Subscriber</option>";

@@ -1,5 +1,6 @@
 <?php //ob_start();?>
-<?php //session_start();?>
+<?php include "admin/catinclude/functions.php"; ?>
+<?php session_start();?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,8 @@
 
     <!-- Custom CSS -->
     <link href="css/blog-home.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="css/sb-admin.css"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

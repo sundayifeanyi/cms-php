@@ -16,7 +16,7 @@ $connection = mysqli_connect (HOST,ROOT,PASS,CMSDB);
 
 // $connection = mysqli_connect($host,$root,'',$cmsdb);
  if($connection){
-      echo 'connected';
+      //echo 'connected';
 }
 
 ?>

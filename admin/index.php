@@ -1,4 +1,4 @@
-<?php include "catinclude/header.php"?>
+<?php include "catinclude/admin_header.php"?>
 
     <div id="wrapper">
 
@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            welcome to admin page
+                            welcome 
                             <small> <?php echo $_SESSION['firstname'];?> </small>
                         </h1>
                         <!-- <ol class="breadcrumb">
@@ -196,4 +196,4 @@
         </div>
         <!-- /#page-wrapper -->
 
-   <?php include "catinclude/footer.php"?>
+   <?php include "catinclude/admin_footer.php"?>

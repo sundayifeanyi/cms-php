@@ -1,5 +1,7 @@
 <?php include "includes/db.php"; ?>
 
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,6 +21,7 @@
                <?php 
                $query = "SELECT * FROM categories";
                $select_categories = mysqli_query($connection,$query);
+               testResult($select_categories);
 
                while($row = mysqli_fetch_assoc($select_categories)){
                    $cat_title = $row['cat_title'];
@@ -29,13 +32,9 @@
                     <li>
                         <a href="admin">Admin</a>
                     </li>
-                    <!-- 
                     <li>
-                        <a href="#">Services</a>
+                        <a href="registration.php">Registration</a>
                     </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

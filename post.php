@@ -38,7 +38,7 @@
                     <a href="#"><?php echo $post_title ?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author ?></a>
+                    by <a href="author_posts.php?author=<?php echo $post_author ?>&p_id=<?php echo $d_post_id;?>"><?php echo $post_author ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>
@@ -64,6 +64,7 @@
                     $email = $_POST['comment_email'];
                     $content = $_POST['comment_content'];
                     
+                    if(!empty($author) && !empty($email) && !empty($content)){
 
                     $query = "INSERT INTO commets (comment_post_id,	comment_author,comment_emial,comment_content,comment_status,comment_date)";
                     $query .= "VALUES ($d_post_id, '{$author}', '{$email}', '{$content}','unapproved',now())";
@@ -75,6 +76,12 @@
 
                     $query = "UPDATE post_blog SET post_comments_count = post_comments_count + 1 WHERE post_id = $d_post_id";
                     $count_query = mysqli_query($connection,$query);
+                } else {
+                    //echo "<script> window.alert('fields can't be empty');</script>";
+                    echo '<script language="javascript">';
+                    echo 'alert("Field(s) Can\'t Be empty")';  //not showing an alert box.
+                    echo '</script>';
+                }
                 }
                 ?>
                 <div class="well">

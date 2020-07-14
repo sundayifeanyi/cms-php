@@ -1,4 +1,4 @@
-<?php include "catinclude/header.php "?>
+<?php include "catinclude/admin_header.php "?>
     <?php
     if(isset($_SESSION['username'])){
        $username = $_SESSION['username'];
@@ -117,4 +117,4 @@ if(isset($_POST['update_profile'])){
         </div>
         <!-- /#page-wrapper -->
 </div>
-<?php include "catinclude/footer.php "?>
+<?php include "catinclude/admin_footer.php "?>

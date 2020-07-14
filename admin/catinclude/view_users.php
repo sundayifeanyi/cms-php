@@ -1,6 +1,30 @@
+<?php
+if(isset($_POST['checkBoxArray'])){
+
+   foreach( $_POST['checkBoxArray'] as $checkBoxId ){
+     $bulkOption = $_POST['bulkOption'];
+     switch ($bulkOption){
+        case 'Delete':
+            $queryD = "DELETE FROM users WHERE user_id = {$checkBoxId}";
+            $update_query = mysqli_query($connection,$queryD);
+        break;
+     };
+
+    }
+}
+?>
+
 <table class="table table-bordered table-hover">
+<div id="bulkoptionContainer" class="col-xs-4">
+    <select name="bulkOption" id="bulkOption"  class="form-control">
+        <option value="Delete">Delete</option>
+    </select>
+</div>
+<div class="col-xs-4">
+<input type="submit" class="btn btn-success" name="submit" value="Apply">
                           <thead>
                               <tr>
+                              <th><input id="selectAll" type="checkbox"></th>
                                   <th>Id</th>
                                   <th>Username</th>
                                   <th>Password</th>
@@ -34,6 +58,7 @@
                         //$encryt = $row['encrytpass'];
 
                         echo "<tr>";
+                        echo "<td><input class='checkboxes' name='checkBoxArray[]' type='checkbox' value='{$id}'> </td>";
                         echo "<td>{$id}</td>";
                         echo "<td>{$username}</td>";
                         echo "<td>{$password}</td>";
