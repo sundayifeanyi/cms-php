@@ -31,10 +31,12 @@
 
     <!-- Custom CSS -->
     <link href="css_admin/sb-admin.css" rel="stylesheet">
-    <link href="css_admin/css.css" rel="stylesheet">
+    
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css_admin/css.css" rel="stylesheet">
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
     <script src="https://cdn.tiny.cloud/1/ehecemuxmcc1o5ql1gd3rlojgqod516iwigyb3zs0c672zxf/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

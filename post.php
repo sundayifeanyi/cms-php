@@ -15,7 +15,11 @@
 
                     if(isset($_GET['p_id'])){
                         $d_post_id = $_GET['p_id'];
-                        }
+                        
+                        $post_views = "UPDATE post_blog SET post_views_count = post_views_count + 1 
+                        WHERE post_id = $d_post_id";
+                        $view_post_blog = mysqli_query($connection,$post_views);
+                        
                     $query = "SELECT * FROM post_blog WHERE post_id = $d_post_id ";
                     $select_post_blog = mysqli_query($connection,$query);
      
@@ -55,7 +59,10 @@
            
   
              <?php } 
-                    
+                   
+                    }  else{
+                        header("location: index.php");
+                    }
                 ?>
  <?php
                 if(isset($_POST['submitcomment'])){

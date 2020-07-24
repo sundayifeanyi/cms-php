@@ -21,6 +21,8 @@
     <!-- Custom CSS -->
     <link href="css/blog-home.css" rel="stylesheet">
 
+    <link href="css/style.css" rel="stylesheet">
+
     <!-- <link rel="stylesheet" href="css/sb-admin.css"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

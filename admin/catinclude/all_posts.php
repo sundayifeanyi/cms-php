@@ -124,7 +124,8 @@ if(isset($_POST['checkBoxArray'])){
                         echo "<td>{$posts_comment}</td>";
                         echo "<td> <a href='../post.php?p_id=$posts_id'> view posts</a> </td>";
                         echo "<td> <a href='posts.php?source=edit_allpost&p_id= {$posts_id}'> Edit</td>";
-                        echo "<td> <a onclick=\"javascript: return confirm('Are you sure');\" href='posts.php?delete={$posts_id}'> delete</td>";
+                        echo "<td> <a onclick=\"javascript: return confirm('Are you sure');\" href='posts.php?delete={$posts_id}'> delete</a></td>";
+                        echo "<td> <a href='posts.php?reset=$posts_id'>{$posts_views_count}</a></td>";
                         echo "</tr>";
                     }
                         ?>
@@ -136,6 +137,13 @@ if(isset($_POST['checkBoxArray'])){
                         $delete = $_GET['delete'];
                         $deletequery = "DELETE FROM post_blog WHERE post_id = {$delete} ";
                         $delete_id = mysqli_query($connection, $deletequery);
+                        header("location: posts.php");
+                    }
+
+                    if(isset($_GET['reset'])){
+                        $views = $_GET['reset'];
+                        $viewquery = "UPDATE post_blog SET post_views_count = 0 WHERE post_id = ". mysqli_real_escape_string($connection,$views)."";
+                        $view_id = mysqli_query($connection, $viewquery);
                         header("location: posts.php");
                     }
                     ?>

@@ -15,25 +15,8 @@
                         $post_id = $_GET['p_id'];
                         }
 
-                        if(isset($_GET['page'])){
-                            $page = $_GET['page'];
-                            }else{
-                                $page = '';
-                            }
-
-                            if($page == '' || $page == 1){
-                                $page_1 = 0;
-                            }else{
-                                $page_1 = ($page * 5) - 5;
-                            }
-                    $countquery = "SELECT * FROM post_blog";
-                    $select_count = mysqli_query($connection,$countquery);
-                    $counts = mysqli_num_rows($select_count);
-                   // $counts = ceil($counts/1) ;
-
-                    $query = "SELECT * FROM post_blog LIMIT $page_1, 5";
+                    $query = "SELECT * FROM post_blog WHERE post_status = 'published'";
                     $select_post_blog = mysqli_query($connection,$query);
-
      
                     while($row = mysqli_fetch_assoc($select_post_blog)){
                         $post_id = $row['post_id'];
@@ -45,12 +28,10 @@
                         $post_image = $row['post_image'];
                         $post_status = $row['post_status'];
 
-                        if($post_status ===
-                         ''){
+                        if($post_status !== 'published'){
                             echo "<h1>SORRY NO POST ON THIS CONTENT</h1>";
                         }else{
                         ?>
-                        <h1><?php //echo $counts?></h1>
                 <h1 class="page-header">
                 page header
                 <small>Secondary test</small>
@@ -172,21 +153,5 @@
         <!-- /.row -->
 
         <hr>
-
-        <ul class=pager>
-        
-        <?php 
-             for ($i = 1; $i <= $counts; $i++ ){
-
-                if($i == $page){
-                    echo "<li ><a class='active' href='index.php?page={$i}'>{$i}</a></li>";
-                } else{
-                    echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
-                }
-                    
-             }
-                
-        ?>
-        </ul>
 
        <?php include "./includes/footer.php"?>
