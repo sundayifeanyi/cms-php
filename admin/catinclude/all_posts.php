@@ -121,7 +121,14 @@ if(isset($_POST['checkBoxArray'])){
                         }
                         
                         echo "<td>{$posts_date}</td>";
-                        echo "<td>{$posts_comment}</td>";
+
+                        $comments_query = "SELECT * FROM commets WHERE comment_post_id = $posts_id";
+                        $confirmcomment = mysqli_query($connection, $comments_query);
+                        $row = mysqli_fetch_array($confirmcomment);
+                        $comment_id = $row['comment_post_id'];
+                        $countqueryrows = mysqli_num_rows($confirmcomment);
+                        echo "<td> <a href='single_comments.php?id=$posts_id'> {$countqueryrows}</a></td>";
+
                         echo "<td> <a href='../post.php?p_id=$posts_id'> view posts</a> </td>";
                         echo "<td> <a href='posts.php?source=edit_allpost&p_id= {$posts_id}'> Edit</td>";
                         echo "<td> <a onclick=\"javascript: return confirm('Are you sure');\" href='posts.php?delete={$posts_id}'> delete</a></td>";
