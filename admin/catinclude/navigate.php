@@ -12,9 +12,11 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+            <li><a href="#"> online: <span id="useronline"></span> </a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
+                    
                         <li class="message-preview">
                             <a href="#">
                                 <div class="media">

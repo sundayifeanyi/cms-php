@@ -37,15 +37,16 @@ if(isset($_POST['update_user'])){
         }
     }
 
-    $query = "SELECT encrytpass FROM users";
-   $randquery = mysqli_query($connection, $query);
-   if(!$randquery){
-       die('Query fialed'. mysqli_error($connection));
-   } 
+//     $query = "SELECT encrytpass FROM users";
+//    $randquery = mysqli_query($connection, $query);
+//    if(!$randquery){
+//        die('Query fialed'. mysqli_error($connection));
+//    } 
 
-      $row = mysqli_fetch_array($randquery);
-      $emcrypt = $row['encrytpass'];
-      $hashedpassword = crypt($userpassword,$emcrypt);
+    //   $row = mysqli_fetch_array($randquery);
+    //   $emcrypt = $row['encrytpass'];
+    //   $hashedpassword = crypt($userpassword,$emcrypt);
+    $hashedpassword = password_hash($userpassword, PASSWORD_BCRYPT, array('cost' => 12));
 
     $query ="UPDATE users SET 
     username= '{$username}',
@@ -69,7 +70,7 @@ if(isset($_POST['update_user'])){
     </div>
     <div class="form-group">
         <label for="Password">Password</label>
-        <input type="password" class="form-control" name="userpassword">
+        <input type="password" value="<?php echo $password;?>" class="form-control" name="userpassword">
     </div>
     <div class="form-group">
         <label for="Firstname">Firstname</label>

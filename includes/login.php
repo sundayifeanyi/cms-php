@@ -8,6 +8,8 @@
             $usern = mysqli_real_escape_string($connection,$usern);
             $passw = mysqli_real_escape_string($connection,$passw);
 
+           // $passw = password_hash($passw, PASSWORD_BCRYPT, array('cost' => 12));
+
             $query = "SELECT * FROM users WHERE username = '{$usern}'";
             $select = mysqli_query($connection,$query);
             if(!$select){
@@ -23,9 +25,10 @@
                $new_userrole = $row['user_role'];
             }
 
-            $passw = crypt($passw, $new_password);
-            if($usern === $new_username && $passw === $new_password && $new_userrole == 'Admin'){
-                
+           // $passw = crypt($passw, $new_password);
+          // if($usern === $new_username && $passw === $new_password && $new_userrole == 'Admin')
+            if(password_verify($passw,$new_password)){
+                if($new_userrole == 'Admin'){
                 $_SESSION['username'] = $new_username;
                 $_SESSION['firstname'] = $new_userfirstn;
                 $_SESSION['lastname'] = $new_userlastn;
@@ -39,7 +42,7 @@
                 // $_SESSION['lastname'] = $new_userlastn;
                 // $_SESSION['role'] = $new_userrole;
                 //$session['username'] = $new_username;
-
+                }
             }else{header("location: ../index.php");}
         }
     ?>

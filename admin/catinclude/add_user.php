@@ -8,6 +8,9 @@ if(isset($_POST['create_user'])){
     $userimage= $_FILES['userimage']['name'];
     $userimage_temp= $_FILES['userimage']['tmp_name'];
     $userrole = $_POST['role'];
+
+
+    $userpassword = password_hash($userpassword, PASSWORD_BCRYPT, array('cost' => 12));
     //$userdate= date('d-m-y');
     
     move_uploaded_file($userimage_temp,"../images/$userimage");

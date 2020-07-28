@@ -27,7 +27,7 @@ if(isset($_POST['checkBoxArray'])){
                               <th><input id="selectAll" type="checkbox"></th>
                                   <th>Id</th>
                                   <th>Username</th>
-                                  <th>Password</th>
+                                  <!-- <th>Password</th> -->
                                   <th>Fname</th>
                                   <th>Lname</th>
                                   <th>Email</th>
@@ -61,7 +61,7 @@ if(isset($_POST['checkBoxArray'])){
                         echo "<td><input class='checkboxes' name='checkBoxArray[]' type='checkbox' value='{$id}'> </td>";
                         echo "<td>{$id}</td>";
                         echo "<td>{$username}</td>";
-                        echo "<td>{$password}</td>";
+                        //echo "<td>{$password}</td>";
                         echo "<td>{$firstname}</td>";
                         echo "<td>{$lastname}</td>";
                         echo "<td>{$email}</td>";

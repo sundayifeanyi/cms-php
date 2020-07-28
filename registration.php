@@ -23,15 +23,16 @@ if(isset($_POST['submit'])){
         $ufirstname = mysqli_escape_string($connection,$ufirstname);
         $ulastname = mysqli_escape_string($connection,$ulastname);
 
-      $query = "SELECT encrytpass FROM users";
-      $randquery = mysqli_query($connection, $query);
-      if(!$randquery){
-          die('Query fialed'. mysqli_error($connection));
-      } 
+    //   $query = "SELECT encrytpass FROM users";
+    //   $randquery = mysqli_query($connection, $query);
+    //   if(!$randquery){
+    //       die('Query fialed'. mysqli_error($connection));
+    //   } 
 
-         $row = mysqli_fetch_array($randquery);
-         $emcrypt = $row['encrytpass'];
-         $upassword = crypt($upassword,$emcrypt);
+        //  $row = mysqli_fetch_array($randquery);
+        //  $emcrypt = $row['encrytpass'];
+         //$upassword = crypt($upassword,$emcrypt);
+         $upassword = password_hash('secret', PASSWORD_BCRYPT, array('cost' => 12));
 
     $queryme = "INSERT INTO users (username,user_password
     ,user_firstname,user_lastname,user_email,user_image

@@ -21,4 +21,11 @@ $( document ).ready(function() {
  $("body").prepend('div_box');
 });
 
-    
+function userSession(){
+    $.get("functions.php?usersonline=result",function(data){
+        $("#useronline").text(data);
+     });
+}
+setInterval (function() {
+    userSession();
+},500);

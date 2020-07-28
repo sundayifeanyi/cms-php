@@ -1,4 +1,43 @@
 <?php
+
+function online_session(){
+
+    if(isset($_GET['usersonline'])){
+    global $connection;
+
+    if(!$connection){
+    session_start();
+    include ("../catinclude/db.php");
+    $session = session_id();
+    $time = time();
+    $time_out = 5;
+    $total_time_spent = $time - $time_out;
+
+    $query = "SELECT * FROM user_online WHERE session = '{$session}'";
+    $call_query = mysqli_query($connection,$query);
+    $counts = mysqli_num_rows($call_query);
+
+    if($counts == NULL){
+
+        $online_query = "INSERT INTO user_online (session,time) VALUES ('$session','$time')";
+        mysqli_query($connection,$online_query);
+
+    }else{
+        
+        $online_query_update = "UPDATE user_online SET time = '$time' WHERE session = '$session'";
+        mysqli_query($connection,$online_query_update);
+    }
+
+    $querysession = "SELECT * FROM user_online WHERE time > '{$time_out}'";
+    $session_query = mysqli_query($connection,$querysession);
+    $count_online_users = mysqli_num_rows($session_query);
+    echo $count_online_users;
+    }
+  }// get request for url reload
+}
+
+online_session();
+//testResult(online_session());
 //test queries
 function testResult($result){
     global $connection;
@@ -24,6 +63,7 @@ function insert_session(){
         }
     }
 }
+
 // findallcat
 
 function findall_session(){
