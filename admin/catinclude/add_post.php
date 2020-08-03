@@ -40,7 +40,19 @@ if(isset($_POST['create_post'])){
     </div>
     <div class="form-group">
         <label for="post_author">post_author</label>
-        <input type="text" class="form-control" name="post_author">
+        <select name="post_author" id="" class="form-control"> 
+       <?php 
+        
+        $userquery = "SELECT * FROM users ";
+        $select_user = mysqli_query($connection,$userquery);
+        while($row = mysqli_fetch_assoc($select_user)){
+            testResult($select_user);
+            $user_id = $row['user_id'];
+            $username = $row['username'];
+            echo "<option value='$user_id'>$username</option>";
+        }
+        ?>
+       </select>
     </div>
     <div class="form-group">
         <label for="post_category">post_category</label>
