@@ -14,7 +14,7 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                      <h1 class="text-center">Welcome Back </h1>
+                      <h1 class="text-center">Welcome To Comments Box </h1>
 
 <table class="table table-bordered table-hover">
 
@@ -63,10 +63,10 @@
                         echo "<td>{$comment_status}</td>";
                         echo "<td>{$comment_content}</td>";
                         echo "<td>{$comment_date}</td>";
-                        echo "<td> <a href='comments.php?approved={$comment_id}'>Approved</td>";
-                        echo "<td> <a href='comments.php?unapproved={$comment_id}'>unapproved</td>";
+                        echo "<td> <a href='single_comments.php?approved={$comment_id}'>Approved</td>";
+                        echo "<td> <a href='single_comments.php?unapproved={$comment_id}'>unapproved</td>";
                         //echo "<td> <a href='post.php?source=edit_allpost&p_id= {$comment_id}'> Edit</td>";
-                        echo "<td> <a href='comments.php?delete={$comment_id}'> delete</td>";
+                        echo "<td> <a href='single_comments.php?delete={$comment_id}&id=".$_GET['id']."'> delete</td>";
                         echo "</tr>";
                     }
                         ?>
@@ -77,21 +77,21 @@
                             $approve = $_GET['approved'];
                             $approvecomments = "UPDATE commets SET comment_status = 'approved' WHERE comment_id = $approve";
                             $approve = mysqli_query($connection,  $approvecomments);
-                            header("location: comments.php");
+                            header("location: single_comments.php");
                         }
 
                         if(isset($_GET['unapproved'])){
                             $unapprove = $_GET['unapproved'];
                             $unapprovecomments = "UPDATE commets SET comment_status = 'unapproved' WHERE comment_id = $unapprove";
                             $unapprove = mysqli_query($connection,  $unapprovecomments);
-                            header("location: comments.php");
+                            header("location: single_comments.php");
                         }
 
                         if(isset($_GET['delete'])){
                         $delete = $_GET['delete'];
                         $deletecomments = "DELETE FROM commets WHERE comment_id = {$delete} ";
                         $delete_id = mysqli_query($connection, $deletecomments);
-                        header("location: comments.php");
+                        header("location: single_comments.php&id=".$_GET['id']."");
                     }
                     ?>
 
