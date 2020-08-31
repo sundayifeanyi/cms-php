@@ -94,13 +94,19 @@ if(isset($_GET['change_to_subscriber'])){
     $approve = mysqli_query($connection,  $changerole);
     header("location: users.php");
  }
-                        if(isset($_GET['delete'])){
-                        $delete = $_GET['delete'];
-                        $deleteuser = "DELETE FROM users WHERE user_id = {$delete} ";
-                        $delete_user = mysqli_query($connection, $deleteuser);
-                        header("location: users.php");
-                    }
-                    ?>
+
+if(isset($_GET['delete'])){
+    if(isset($_SESSION['role'])){
+        if($_SESSION['role'] == 'Admin'){
+            $delete = $_GET['delete'];
+            $deleteuser = "DELETE FROM users WHERE user_id = {$delete} ";
+            $delete_user = mysqli_real_escape_string($connection, $deleteuser);
+            header("location: users.php");
+        }
+    }
+   
+     }
+ ?>
                    
                        
                       
