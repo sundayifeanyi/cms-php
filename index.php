@@ -39,6 +39,7 @@
                         $post_id = $row['post_id'];
                         $post_title = $row['post_title'];
                         $post_user = $row['post_user'];
+                        // change post authur to user when the need arise
                         $post_author = $row['post_author'];
                         $post_content = $row['post_content'];
                         $post_date = $row['post_date'];

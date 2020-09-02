@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['create_post'])){
-    $post_title= $_POST['post_title'];
+    $post_title= escape($_POST['post_title']);
     $post_user= $_POST['post_user'];
     $post_author= $_POST['post_author'];
     $post_category= $_POST['post_category'];

@@ -35,6 +35,10 @@
                     <li>
                         <a href="registration.php">Registration</a>
                     </li>
+
+                    <li>
+                        <a href="contact.php">contact us</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
