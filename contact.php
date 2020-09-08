@@ -2,31 +2,40 @@
  <?php  include "includes/header.php"; ?>
 
  <?php
+// the message
+$msg = "hi";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("thekingdomsunday@yahoo.com","empty",$msg);
+
 if(isset($_POST['submit'])){
-    $to = 'thekingdomsunday@yahoo.com';
+    $to = "thekingdomsunday@yahoo.com";
     $subject= $_POST['subject'];
     $name= $_POST['name'];
     $content= $_POST['content'];
     
-      if(!empty($to) && !empty($subject) && !empty($content)){
+//       if(!empty($to) && !empty($subject) && !empty($content)){
 
-        $to = mysqli_escape_string($connection,$to);
-        $subject  = mysqli_escape_string($connection,$subject);
-        $content = mysqli_escape_string($connection,$content);
+//         $to = mysqli_escape_string($connection,$to);
+//         $subject  = mysqli_escape_string($connection,$subject);
+//         $content = mysqli_escape_string($connection,$content);
 
-    $queryme = "INSERT INTO contact (ids,subjects,content)
-    VALUES('{$name}','{$subject}','{$content}')";
+//     $queryme = "INSERT INTO contact (ids,subjects,content)
+//     VALUES('{$name}','{$subject}','{$content}')";
 
-    $contact_me = mysqli_query($connection,$contact_me);
-    //echo "1 User Created Successfully: " . " " . "<a href='admin/users.php'>View Users</a>";
-    $message = 'message submitted Successfully';
-    if(!$contact_me){
-        die('Fialed request' . mysqli_error($connection) . ' '. mysqli_errno($connection));
-    }
-}
-    else{
-        echo "<h3 class='text-center'> Field(s) cannot be empty  </h3>";
-    } 
+//     $contact_me = mysqli_query($connection,$contact_me);
+//     //echo "1 User Created Successfully: " . " " . "<a href='admin/users.php'>View Users</a>";
+//     $message = 'message submitted Successfully';
+//     if(!$contact_me){
+//         die('Fialed request' . mysqli_error($connection) . ' '. mysqli_errno($connection));
+//     }
+// }
+//     else{
+//         echo "<h3 class='text-center'> Field(s) cannot be empty  </h3>";
+//     } 
 }
 ?>
     <!-- Navigation -->
@@ -42,7 +51,7 @@ if(isset($_POST['submit'])){
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="form-wrap">
-                <h1>Please we love to hear from you</h1>
+                <h1 class="text-center">we love to hear from you</h1>
                     <form role="form" action="contact.php" method="post" id="contact-form" autocomplete="on" enctype="multipart/form-data">
                     <div class="form-group">
                             <label for="fname" class="sr-only">Name</label>
