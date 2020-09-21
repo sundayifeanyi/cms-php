@@ -2,7 +2,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    
     <script src="js/jquerys.js"></script>
     
     <!-- Bootstrap Core JavaScript -->

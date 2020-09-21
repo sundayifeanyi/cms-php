@@ -40,6 +40,7 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
     <script src="https://cdn.tiny.cloud/1/ehecemuxmcc1o5ql1gd3rlojgqod516iwigyb3zs0c672zxf/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="js/jquery.js"></script>
     
 </head>
 
