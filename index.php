@@ -47,8 +47,8 @@
                         $post_status = $row['post_status'];
 
                         if($post_status ===
-                         ''){
-                            echo "<h1>SORRY NO POST ON THIS CONTENT</h1>";
+                         'Draft'){
+                            echo "<h1>SORRY :CONTENT NOT PUBLISHED</h1>";
                         }else{
                         ?>
                         <h1><?php //echo $counts?></h1>
@@ -84,22 +84,22 @@
                     
                 ?>
  <?php
-                if(isset($_POST['submitcomment'])){
-                    $comment_post_id = $_GET['p_id'];
-                    $post_comment_id = $_POST['comment_id'];
-                    $author = $_POST['comment_author'];
-                    $email = $_POST['comment_email'];
-                    $content = $_POST['comment_content'];
+            if(isset($_POST['submitcomment'])){
+                $comment_post_id = $_GET['p_id'];
+                $post_comment_id = $_POST['comment_id'];
+                $author = $_POST['comment_author'];
+                $email = $_POST['comment_email'];
+                $content = $_POST['comment_content'];
 
-                    $query = "INSERT INTO commets (comment_post_id,	comment_author,comment_emial,comment_content,comment_status,comment_date)";
-                    $query .= "VALUES ($post_comment_id, '{$author}', '{$email}', '{$content}','unapproved',now())";
+                $query = "INSERT INTO commets (comment_post_id,	comment_author,comment_emial,comment_content,comment_status,comment_date)";
+                $query .= "VALUES ($post_comment_id, '{$author}', '{$email}', '{$content}','unapproved',now())";
 
-                    $query_comments = mysqli_query($connection,$query);
-                    if(!$query_comments){
-                        die('query fialed' . mysqli_error($connection));
+                $query_comments = mysqli_query($connection,$query);
+                if(!$query_comments){
+                    die('query fialed' . mysqli_error($connection));
                     }
                 }
-                ?>
+    ?>
                 <div class="well">
                 <h4>Leave a comment</h4>
                 <form role="form" action="" method="post">
