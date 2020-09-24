@@ -46,7 +46,7 @@ if(isset($_POST['create_post'])){
             $user_id = $row['user_id'];
             $username = $row['username'];
             $userlname = $row['user_lastname'];
-            echo "<option value='$user_id'>$userlname</option>";
+            echo "<option value='$userLname'>$userlname</option>";
         }
         ?>
        </select>
@@ -62,7 +62,7 @@ if(isset($_POST['create_post'])){
             testResult($select_user);
             $user_id = $row['user_id'];
             $username = $row['username'];
-            echo "<option value='$user_id'>$username</option>";
+            echo "<option value='$username'>$username</option>";
         }
         ?>
        </select>
@@ -78,7 +78,7 @@ if(isset($_POST['create_post'])){
             testResult($select_post_cat);
             $cat_id = $row['cat_id'];
             $cat_title = $row['cat_title'];
-            echo "<option value='$cat_id'>$cat_title</option>";
+            echo "<option value='$cat_title'>$cat_title</option>";
         }
         ?>
        </select>

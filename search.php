@@ -1,7 +1,8 @@
 <?php include "includes/db.php"?>
 <?php include "includes/header.php"?>
-    <!-- Navigation -->
 <?php include "includes/navigation.php"?>
+   
+   
     <!-- Page Content -->
     <div class="container">
 
@@ -13,7 +14,7 @@
 if(isset($_POST['submit'])){
     $search =  $_POST['search'];
 
-    $query = "SELECT * FROM post_blog WHERE post_tags LIKE '%$search%' ";
+    $query = "SELECT * FROM post_blog WHERE post_category LIKE '%$search%' ";
     $search_query = mysqli_query($connection,  $query);
 
     if(!$search_query){
@@ -21,7 +22,13 @@ if(isset($_POST['submit'])){
     }
     $count = mysqli_num_rows($search_query);
     if($count == 0){
-        echo "<h1> NO RESULT </h1>";
+        echo "<h4>Sadly, there is no information on your Search request</h4>";
+        echo "<p> 
+        Make sure that the information you enter is correct or 
+        specify another number. After fixing the mistake,
+        <b> <em> please try again...</em> </b>Also you can use 
+        manual search in case there is no information on your request.
+        </p>";
     } else{
         // $query = "SELECT * FROM post_blog";
         // $select_post_blog = mysqli_query($connection,$query);

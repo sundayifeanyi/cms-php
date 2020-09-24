@@ -74,7 +74,20 @@ while($row = mysqli_fetch_assoc($select_posts_by_id)){
     </div>
     <div class="form-group">
         <label for="post_user">post_user</label>
-        <input type="text" value="<?php echo $post_user?>" class="form-control" name="post_user">
+        <select name="post_user" id="" class="form-control"> 
+       <?php 
+        
+        $userdisplay = "SELECT * FROM users ";
+        $select_Auser = mysqli_query($connection,$userdisplay);
+        while($row = mysqli_fetch_assoc($select_Auser)){
+            testResult($select_Auser);
+            $user_id = $row['user_id'];
+            $username = $row['username'];
+            $userlname = $row['user_lastname'];
+            echo "<option value='$userLname'>$userlname</option>";
+        }
+        ?>
+       </select>
     </div>
     <div class="form-group">
         <label for="post_author">post_author</label>
@@ -92,7 +105,7 @@ while($row = mysqli_fetch_assoc($select_posts_by_id)){
             testResult($select_post_cat);
             $cat_id = $row['cat_id'];
             $cat_title = $row['cat_title'];
-            echo "<option value='$cat_id'>$cat_title</option>";
+            echo "<option value='$cat_title'>$cat_title</option>";
         }
         ?>
        </select>
