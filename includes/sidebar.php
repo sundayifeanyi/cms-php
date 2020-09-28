@@ -22,10 +22,10 @@
     
     
     <?php if(isset($_SESSION['role'])):?>
-        <h4>Logged in as <? echo $_SESSION['username'];?></h4>
-    <?php else:?>
+        <h4>Logged in as <em> <?php echo $_SESSION['username'];?> </em></h4>
+        <a href="includes/logout.php" class="btn btn-success">logout</a>
 
-        <?php endif; ?>
+    <?php else:?>
 
     <!-- /login form -->
     <h4>Login</h4>
@@ -40,7 +40,7 @@
         </span>
     </div>
     </form>
-
+    <?php endif; ?>
 </div>
 
 <!-- Blog Categories Well -->
