@@ -38,14 +38,7 @@
                         <i class="fa fa-file-text fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                    <?php
-                    $query = "SELECT * FROM post_blog";
-                    $select = mysqli_query($connection, $query);
-                    $post_counts =mysqli_num_rows($select);
-                    echo "<div class='huge'>$post_counts</div>";
-                    ?>
-                  
-                        <div>Posts</div>
+                    <div class='huge'><?php echo $post_counts = record_count('post_blog');?></div><div>Posts</div>
                     </div>
                 </div>
             </div>
@@ -66,12 +59,7 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                    <?php
-                    $query = "SELECT * FROM commets";
-                    $select = mysqli_query($connection, $query);
-                    $comment_counts =mysqli_num_rows($select);
-                    echo "<div class='huge'>$comment_counts</div>";
-                    ?>
+                    <div class='huge'><?php echo $comment_counts = record_count('commets');?></div>
                       <div>Comments</div>
                     </div>
                 </div>
@@ -143,17 +131,12 @@
 <!-- row_end -->
 <div class="row">
     <?php
-    $query = "SELECT * FROM post_blog WHERE post_status = 'draft'";
-    $select_draft = mysqli_query($connection, $query);
-    $draft_counts =mysqli_num_rows($select_draft);
+    $draft_counts = disabled( "post_blog",'post_status','published');
 
     $query = "SELECT * FROM commets WHERE comment_status = 'unapproved'";
     $select_unapproved_comments = mysqli_query($connection, $query);
     $unapproved_comments =mysqli_num_rows($select_unapproved_comments);
 
-    // $query = "SELECT * FROM users WHERE";
-    // $select = mysqli_query($connection, $query);
-    // $user_counts =mysqli_num_rows($select);
     
     // $query = "SELECT * FROM categories WHERE ";
     // $select_ = mysqli_query($connection, $query);
@@ -168,7 +151,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Data', 'Counts'],
           <?php
-          $Entries = ['Posts','Drafts','Categories','Users','Comments','unapproved_comments'];
+          $Entries = ['Posts','Published','Categories','Users','Comments','unapproved_comments'];
           $counts = [$post_counts,$draft_counts,$cat_counts,$user_counts,$comment_counts,$unapproved_comments];
           for($i= 0; $i < 6; $i++){
               echo "['{$Entries[$i]}'" . "," . "{$counts[$i]}],";

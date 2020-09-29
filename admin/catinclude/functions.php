@@ -110,6 +110,22 @@ if(isset($_GET['delete'])){
  }
 }
 
+function record_count($table){
+    global $connection;
+    $query = "SELECT * FROM " .$table;
+    $select = mysqli_query($connection, $query);
+    $result =mysqli_num_rows($select);
+    testResult($result);
+    return $result;
+}
+
+function disabled($table,$column,$value){
+    global $connection;
+    $query = "SELECT * FROM $table WHERE $column = '$value'";
+    $select_result = mysqli_query($connection, $query);
+    return mysqli_num_rows($select_result);
+}
+
 // update session in all_post
 function update(){
     if(isset($_GET['update'])){
