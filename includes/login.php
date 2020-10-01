@@ -1,5 +1,27 @@
+<?php ob_start(); ?>
 <?php include "db.php"; ?>
 <?php session_start(); ?>
+
+<?php
+    function checkadmin($username = '') {
+        global $connection;
+        $query = "SELECT user_role FROM users WHERE username = $username";
+        $result = mysqli_query($connection,$query);
+        //testResult($result);
+        $row = mysqli_fetch_array($result);
+        
+        if($row['user_role'] == 'Admin'){
+            return true;
+        }else{
+            return false;
+        }
+    
+    }
+
+    if(!checkadmin($_SESSION['username'])){
+        header("location: ../index.php");
+    }
+?>
 <?php
          if(isset($_POST['login'])){
             $usern = $_POST['username'];

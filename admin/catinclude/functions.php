@@ -125,6 +125,8 @@ function disabled($table,$column,$value){
     $select_result = mysqli_query($connection, $query);
     return mysqli_num_rows($select_result);
 }
+// login function
+
 
 // update session in all_post
 function update(){
@@ -150,4 +152,6 @@ function update(){
             }
             }
 }
+
+
 ?>
