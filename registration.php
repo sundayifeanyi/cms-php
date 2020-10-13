@@ -3,6 +3,8 @@
 
  <?php
 if(isset($_POST['submit'])){
+
+   
     $uname= $_POST['username'];
     $upassword= $_POST['password'];
     $uemail= $_POST['email'];
@@ -23,15 +25,10 @@ if(isset($_POST['submit'])){
         $ufirstname = mysqli_escape_string($connection,$ufirstname);
         $ulastname = mysqli_escape_string($connection,$ulastname);
 
-    //   $query = "SELECT encrytpass FROM users";
-    //   $randquery = mysqli_query($connection, $query);
-    //   if(!$randquery){
-    //       die('Query fialed'. mysqli_error($connection));
-    //   } 
-
-        //  $row = mysqli_fetch_array($randquery);
-        //  $emcrypt = $row['encrytpass'];
-         //$upassword = crypt($upassword,$emcrypt);
+        if(checkuserexist($uname)){
+            echo "<h3 class='text-center'> {$username} already exist..   </h3>";
+        }
+        
          $upassword = password_hash('secret', PASSWORD_BCRYPT, array('cost' => 12));
 
     $queryme = "INSERT INTO users (username,user_password

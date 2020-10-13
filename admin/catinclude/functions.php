@@ -1,5 +1,8 @@
 <?php
- 
+ function redirect($location){
+    return header("location:" . $location);
+ }
+
  function escape($string){
     global $connection;
     return mysqli_real_escape_string($connection,$string);
@@ -127,7 +130,21 @@ function disabled($table,$column,$value){
 }
 // login function
 
+function checkuserexist($username) {
+    global $connection;
+    $query = "SELECT username FROM users WHERE username = $username";
+    $result = mysqli_query($connection,$query);
+    testResult($result);
+    //$row = mysqli_fetch_array($result);
+    $colomn =  mysqli_num_rows($result);
+    
+    if($colomn > 0){
+        return true;
+    }else{
+        return false;
+    }
 
+}
 // update session in all_post
 function update(){
     if(isset($_GET['update'])){
