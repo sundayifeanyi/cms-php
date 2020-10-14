@@ -4,7 +4,7 @@
  <?php
 if(isset($_POST['submit'])){
 
-   
+   //you can also write a function for user register()
     $uname= $_POST['username'];
     $upassword= $_POST['password'];
     $uemail= $_POST['email'];
