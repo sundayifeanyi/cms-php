@@ -10,3 +10,6 @@ footer {
 .pager li .active{
     background: #000 !important;
 }
+.well{
+    background: linear-gradient(DeepSkyBlue,Black);
+    color: white;}
