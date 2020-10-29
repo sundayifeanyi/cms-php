@@ -5,11 +5,11 @@
 if(isset($_POST['submit'])){
 
    //you can also write a function for user register()
-    $uname= $_POST['username'];
-    $upassword= $_POST['password'];
-    $uemail= $_POST['email'];
-    $ufirstname= $_POST['fname'];
-    $ulastname= $_POST['lname'];
+    $uname= trim($_POST['username']);
+    $upassword= trim($_POST['password']);
+    $uemail= trim($_POST['email']);
+    $ufirstname= trim($_POST['fname']);
+    $ulastname= trim($_POST['lname']);
     $uimage= $_FILES['image']['name'];
     $uimage_temp= $_FILES['image']['tmp_name'];
     
@@ -24,6 +24,20 @@ if(isset($_POST['submit'])){
         $upassword = mysqli_escape_string($connection,$upassword);
         $ufirstname = mysqli_escape_string($connection,$ufirstname);
         $ulastname = mysqli_escape_string($connection,$ulastname);
+
+        $error = [
+            'uname'=> '',
+            'uemail'=> '',
+            'upassword'=> '',
+            'ufirstname' => '',
+            'ulastname' => ''
+        ];
+        if($uname < 4){
+          echo  $error['uname']= 'username cannot be less than 4 characters';
+        }
+        if($uname == ''){
+          echo   $error['uname']= 'username cannot empty';
+        }
 
         if(checkuserexist($uname)){
             echo "<h3 class='text-center'> {$username} already exist..   </h3>";
